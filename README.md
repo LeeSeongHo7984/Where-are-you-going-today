@@ -4,7 +4,7 @@
 + 모바일 인터페이스
 
 ## 팀 구성원
-+ 5명 ( [본인](https://github.com/LeeSeongHo7984) [상규](https://github.com/parkSangGyu98) [태영](https://github.com/wed456) [기열](https://github.com/BaekKiYeol) [태우](https://github.com/workhan0918) )
++ 5명 ( [성호(본인)](https://github.com/LeeSeongHo7984) [상규](https://github.com/parkSangGyu98) [태영](https://github.com/wed456) [기열](https://github.com/BaekKiYeol) [태우](https://github.com/workhan0918) )
 
 ## 사용한 기술 및 환경
 + eclipse
