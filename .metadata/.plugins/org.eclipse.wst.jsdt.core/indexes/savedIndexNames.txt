@@ -1,15 +1,7 @@
 INDEX VERSION 1.4+C:\wgt\Where-are-you-going-today\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3572009073.index
+2364889494.index
+3390053572.index
 2348222925.index
 3993714241.index
-1715659425.index
-3337084223.index
-3390053572.index
-3877521364.index
-1165624629.index
-618441080.index
-2364889494.index
-574249403.index
 4216385549.index
-3598862639.index
-1102349332.index
-2921121194.index
