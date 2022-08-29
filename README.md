@@ -308,3 +308,63 @@
 ## 구현 화면
   ### 로그인
   
+  ![image](https://user-images.githubusercontent.com/75346102/187143305-83d6c03d-2d79-4ab6-bbaf-c114e099b5a9.png)
+  ![image](https://user-images.githubusercontent.com/75346102/187143430-538d3d75-0b2b-4367-9715-4da8ef7edbb6.png)
+  
+  ### 사용자 회원가입, 점주 회원가입
+  	+ 우편번호 찾기는 API를 이용하였습니다.
+	
+![image](https://user-images.githubusercontent.com/75346102/187143812-9485801a-0ae1-42da-b434-e15c0e2378db.png)
+![image](https://user-images.githubusercontent.com/75346102/187144013-f19a18dd-bae3-406a-8103-5984b520d959.png)
+	
+  ### 점주 매장 등록
+
+![image](https://user-images.githubusercontent.com/75346102/187144401-80b8fc02-f91f-4aac-8e33-196088d3aa2b.png)
+![image](https://user-images.githubusercontent.com/75346102/187144451-5154b4ad-4a5a-45bc-9a07-8f1f8a105d88.png)
+![image](https://user-images.githubusercontent.com/75346102/187144762-b38c6bea-7601-4fd2-9b99-cb2c9062e538.png)
+![image](https://user-images.githubusercontent.com/75346102/187144842-fa37fa07-c78c-4e8c-a89a-1fdade4068a4.png)
+![image](https://user-images.githubusercontent.com/75346102/187145437-e151c678-3c79-4f1d-af05-553647052a27.png)
+![image](https://user-images.githubusercontent.com/75346102/187145516-5cbe58c1-95d6-42e2-8d74-cdbbe7b6043a.png)
+![image](https://user-images.githubusercontent.com/75346102/187145579-a8231850-f174-489f-95f0-2cd458aa28c9.png)
+![image](https://user-images.githubusercontent.com/75346102/187145603-af68931c-5350-4604-b7dd-5b5de2aaf8ff.png)
+
+  ### 메인 화면
+![image](https://user-images.githubusercontent.com/75346102/187146336-9e0c3403-5404-42ab-a6e8-fa0cd4c5f1d8.png)
+
+  ### 우측 상단 버튼
+![image](https://user-images.githubusercontent.com/75346102/187146420-b5956a9c-0445-4fc3-8cd6-13b1f2fb8311.png)
+
+  ### 회원 정보 조회 및 수정
+![image](https://user-images.githubusercontent.com/75346102/187147148-eda6d8f8-9ab5-40d5-8c16-69efe8a462b9.png)
+![image](https://user-images.githubusercontent.com/75346102/187147186-0ddc7841-c718-401d-930e-d149212d1574.png)
+
+  ### 검색기능
+![image](https://user-images.githubusercontent.com/75346102/187147412-9dce3447-6e5a-4148-82cf-b4ead7bdef37.png)
+
+  ### 웨이팅 등록화면
+![image](https://user-images.githubusercontent.com/75346102/187147626-e63af8d1-f506-4b75-b144-6ee341ab14ec.png)
+
+  ### 회원 웨이팅 내역조회
+![image](https://user-images.githubusercontent.com/75346102/187149155-6e04cb09-efd1-4ce5-9bbc-72b9bc2096af.png)
+
+
+  ### SNS 게시글
+![image](https://user-images.githubusercontent.com/75346102/187148243-4241e9aa-28b9-43ad-b450-0941f4c3aaee.png)
+
+  ### SNS 게시글 작성
+![image](https://user-images.githubusercontent.com/75346102/187148483-8868ffb8-5bda-4ed4-9a2c-6837d4a91a5d.png)
+
+  ### SNS 게시글 수정
+![image](https://user-images.githubusercontent.com/75346102/187148626-5211a6fe-2965-48cf-93ab-938e6229c765.png)
+
+
+
+
+  
+
+	
+
+
+
+
+
