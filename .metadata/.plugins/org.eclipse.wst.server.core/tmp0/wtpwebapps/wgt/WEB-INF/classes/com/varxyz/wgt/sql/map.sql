@@ -1,14 +1,27 @@
-CREATE TABLE test(
-name 			VARCHAR(25) 	NOT NULL,
-address			VARCHAR(100)	NOT NULL PRIMARY KEY,
+CREATE TABLE map(
+mid				BIGINT			PRIMARY KEY AUTO_INCREMENT,
+businessNumber	VARCHAR(13)		NOT NULL,
 longitude		DOUBLE			NOT NULL,
-latitude		DOUBLE			NOT NULL
+latitude		DOUBLE			NOT NULL,
+CONSTRAINT map_FK
+	FOREIGN KEY(businessNumber) REFERENCES shop(businessNumber)
 )
 
-SELECT * FROM test;
+/*시류*/ 
+INSERT INTO map VALUES(mid, "192-83-74655", 35.865886, 128.595598); 
 
-INSERT INTO test VALUES('고영희식당', '대구 중구 달구벌대로 2109-10', 35.8658211, 128.5944444);
-INSERT INTO test VALUES('영희네 김치찜', '대구광역시 중구 중앙대로 366', 35.8659896, 128.5937806);
-INSERT INTO test VALUES('뜨돈', '대구 중구 달구벌대로 2109-30', 35.8666504, 128.5941254);
-DROP TABLE test
-SELECT * FROM test WHERE name like '%영희%'
+/*헤기*/
+INSERT INTO map VALUES(mid, "918-27-36455",35.8719847, 128.5973511); 
+
+/*크로바*/
+INSERT INTO map VALUES(mid, "554-67-38291", 35.8713156, 128.5988512); 
+
+/*뻐꾸기*/
+INSERT INTO map VALUES(mid, "647-32-81955",35.8727425, 128.5984543); 
+
+SELECT * FROM map;
+DROP TABLE map
+SELECT * FROM map WHERE name like '%영희%'
+
+SELECT mid, longitude, latitude FROM map ORDER BY mid ASC
+

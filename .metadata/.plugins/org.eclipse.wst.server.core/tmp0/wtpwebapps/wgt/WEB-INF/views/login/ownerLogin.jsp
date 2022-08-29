@@ -15,14 +15,12 @@
 <body>
 	<button type="button" onclick="location.href='login';" class="user">회원 로그인</button>
 	<form action="ownerLogin" method="post">
-		<div class="owner">점주 로그인</div><br>
+		<div class="owner" style="padding-top: 65px;">점주 로그인</div><br>
 		<div style="text-align: center; margin-bottom: 20px; font-size: 50px;">아이디</div>
 		<div style="text-align: center;"><input type="text" name="ownerId" style="width: 150px; height: 20px; text-align: center;"></div><br>
-		<div style="text-align: center; margin-bottom: 20px; font-size: 50px;">비밀번호</div>
+		<div style="text-align: center; margin-bottom: 20px; font-size: 50px; margin-top: 20px;">비밀번호</div>
 		<div style="text-align: center;"><input type="password" name="passwd" style="width: 150px; height: 20px; text-align: center;"></div><br>
-		<div style="text-align: center; margin-bottom: 20px; font-size: 50px;">사업자 번호</div>
-		<div style="text-align: center;"><input type="text" name="bnumber" style="width: 150px; height: 20px; text-align: center;"></div><br>
-		<input type="submit" value="로그인" class="loginBtn"><br>
+		<input type="submit" value="로그인" class="loginBtn" style="margin-top: 30px;"><br>
 	</form>
 	<button type="button" class="addBtn" onclick="location.href='addOwner';">점주 회원가입</button>
 </body>

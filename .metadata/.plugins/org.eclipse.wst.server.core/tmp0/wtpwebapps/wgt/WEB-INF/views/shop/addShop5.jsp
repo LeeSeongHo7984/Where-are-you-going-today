@@ -15,9 +15,9 @@
       <hr>
       <div id="content">
         <div class="inner">
-          <h1>가게 등록 완료!</h1>
-          <p>사장님의 가게가 성공적으로 등록이 완료되었어요<br>아래의 버튼을 눌러 지금 바로 등록한 가게를 조회해 보세요!</p>
-          <button onclick="location.href='shop/viewTempMyShop'">내 가게 조회</button>
+          <h1 style="font-size: 52px;">가게 등록 완료!</h1>
+          <p style="font-size: 32px;">사장님의 가게가 성공적으로 등록이<br>완료되었어요<br>아래의 버튼을 눌러 지금 바로 등록한<br>가게를 조회해 보세요!</p>
+          <button onclick="location.href='shop/viewTempMyShop'" class="next_btn">내 가게 조회</button>
         </div>
       </div>
       <hr>

@@ -17,18 +17,18 @@
         <div class="inner">
           <form action="add_shop2" method="post" id="addForm">
             <p>사업자 등록 번호</p>
-            <input type="text" name="bns_num" class="input_box" maxlength="13">
+            <input type="text" name="bns_num" class="input_box">
             <p>가게 이름</p>
-            <input type="text" name="shop_name" class="input_box" maxlength="10">
+            <input type="text" name="shop_name" class="input_box" maxlength="10" oninput="autoString(this)" required>
             <p>가게 주소</p>
 			<input type="button" onclick="sample6_execDaumPostcode()" class="next_btn" value="우편번호 찾기"><br>
-			<input type="text" name="shop_address1" id="sample6_postcode" class="input_box" placeholder="우편번호">
-			<input type="text" name="shop_address2" id="sample6_address" class="input_box" placeholder="주소"><br>
-			<input type="text" name="shop_address3" id="sample6_detailAddress" class="input_box" placeholder="상세주소">
-			<input type="text" name="shop_address4" id="sample6_extraAddress" class="input_box" placeholder="참고항목">
+			<input type="text" name="shop_address1" id="sample6_postcode" class="input_box" placeholder="우편번호" oninput="autoNum(this)" maxlength="5" required>
+			<input type="text" name="shop_address2" id="sample6_address" class="input_box" placeholder="주소" oninput="autoString(this)" maxlength="30" required><br>
+			<input type="text" name="shop_address3" id="sample6_detailAddress" class="input_box" placeholder="상세주소" oninput="autoString(this)" maxlength="20" required>
+			<input type="text" name="shop_address4" id="sample6_extraAddress" class="input_box" placeholder="참고항목" oninput="autoString(this)" maxlength="10" required>
             <hr>
             <div class="btn_wrap">
-              <input type="button" value="취소하기" onclick="location.href='map/map'" class="prev_btn">
+              <input type="button" value="취소하기" onclick="location.href='login'" class="prev_btn">
               <input type="submit" value="다음으로" class="next_btn">
             </div>
           </form>
@@ -87,6 +87,15 @@
             }
         }).open();
     }
+    
+    const autoString = (target) => {
+    	  target.value = target.value
+    	   .replace( /[\{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/g, '');
+    	  }
+    const autoNum = (target) => {
+    	  target.value = target.value
+    	   .replace(/[^0-9]/g, '');
+    	  }
 </script>
   </body>
 </html>

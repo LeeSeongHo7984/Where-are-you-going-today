@@ -15,8 +15,9 @@
 </head>
 <body>
 	<script type="text/javascript">
-		function back() {
-			history.back();
+		function go_home() {
+			window.location.href = "/mapController";
+			locate.reload();
 		}
 	</script>
 	<div id="wrap">
@@ -32,21 +33,23 @@
 							인원 : ${x.num_people}명<br>
 							총 대기팀 : ${allCount}팀 <br>
 							내 앞 대기팀 : ${frontCount}팀<br>
-							<span style="color:red;">${msg}</span>
+					<span style="color: red;">${msg}</span>
 				</c:forEach>
 
 			</div>
-			<form action="get_waiting" method="post" class="form_style" >
+			<form action="get_waiting" method="post" class="form_style">
 				<c:if test="${shopTel != '-'}">
-				<div class="btn_wrap">
-					<input type="button" onclick="back()" value="뒤로가기" class="prev_btn"> <input
-						type="submit" value="웨이팅 취소" class="next_btn">
-				</div>
+					<div class="btn_wrap">
+						<a class="prev_btn" style="width: 386px; height: 63px; line-height: 30px;"
+							aria-current="page" href='<c:url value="/map/map"/>'>홈</a> <input
+							type="submit" value="웨이팅 취소" class="next_btn">
+					</div>
 				</c:if>
 				<c:if test="${shopTel == '-'}">
-				<div class="btn_wrap">
-					<input type="button" onclick="back()" value="뒤로가기" class="prev_btn"> 
-				</div>
+					<div class="btn_wrap">
+						<a class="prev_btn" style="margin-right: 10px;" aria-current="page"
+							href='<c:url value="/map/map"/>'>홈</a>
+					</div>
 				</c:if>
 			</form>
 		</div>

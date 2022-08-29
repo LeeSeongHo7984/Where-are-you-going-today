@@ -16,13 +16,24 @@
 <a class="back" href="<c:url value='/ownerLogin'/>"><img src="resources/mapcss/img/backicon.png"></a>
 	<form action="addOwner" method="post">
 		<div style="font-size: 80px; text-align: center; padding-top: 50px;">점주가입</div>
-		<div style="text-align: center; font-size: 30px; padding-top: 30px;">아이디 <input type="text" name="ownerId" style="margin-left: 20px; height: 20px;"></div><br>
-		<div style="margin-left: 45px; font-size: 30px; padding-top: 30px;">비밀번호 <input type="password" name="passwd" style="margin-left: 20px; height: 20px;"></div><br>
-		<div style="margin-left: 86px; font-size: 30px; padding-top: 30px;">이름 <input type="text" name="name" style="margin-left: 20px; height: 20px;"></div><br>
-		<div style="margin-left: 10px; font-size: 30px; padding-top: 30px;">사업자 번호 <input type="text" name="bnumber" style="margin-left: 20px; height: 20px;"></div>
-		<div style="margin-left: 38px; font-size: 30px; padding-top: 40px;">전화번호 <input type="text" name="phone" style="margin-left: 20px; height: 20px;"></div><br>
-		<div style="margin-left: 40px; font-size: 30px; padding-top: 30px;">가게주소 <input type="text" name="addr" style="margin-left: 20px; height: 20px;"></div><br>
+		<div style="text-align: center; font-size: 30px; padding-top: 80px;">아이디 <input type="text" name="ownerId" oninput="dp(this); np(this)" required style="margin-left: 20px; height: 20px;"></div><br>
+		<div style="margin-left: 45px; font-size: 30px; padding-top: 40px;">비밀번호 <input type="password" name="passwd" required style="margin-left: 20px; height: 20px;"></div><br>
+		<div style="margin-left: 86px; font-size: 30px; padding-top: 40px;">이름 <input type="text" name="name" required style="margin-left: 20px; height: 20px;"></div><br>
 		<input type="submit" value="점주가입" class="loginBtn" />
 	</form>
+	
+	<!-- 스크립트 영역 -->
+	<script type="text/javascript">
+	 const dp = (target) => {
+	         target.value = target.value
+	          .replace(/[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/g, '');
+	    }
+	    
+	    const np = (target) => {
+	         target.value = target.value
+	          .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
+	    }
+	</script>
+	
 </body> 
 </html>

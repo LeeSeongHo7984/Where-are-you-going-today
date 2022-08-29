@@ -29,7 +29,8 @@
 				<c:forEach var="waiting" items="${MyShopWaitingList}"
 					varStatus="status">
 					<c:if test="${waiting.userId != '없음'}">
-						<form action="waitingCheck" method="post">
+						<form action="waitingCheck" method="post"
+							style="margin-bottom: 55px;">
 							순번 : ${status.index+1}<br> 고객ID : <input name="userId"
 								value="${waiting.userId}"
 								style="opacity: 0; width: 0; height: 0;">${waiting.userId}<br>
@@ -48,21 +49,19 @@
 				</c:forEach>
 			</div>
 			<form action="allWaitingClear" method="post" class="form_style">
-				<c:forEach var="waiting" items="${MyShopWaitingList}">
-					<c:if test="${waiting.userId != '없음'}">
-						<div class="btn_wrap">
-							<input type="button" onclick="back()" value="뒤로가기"
-								class="prev_btn"> <input type="submit" value="내역 초기화"
-								class="next_btn">
-						</div>
-					</c:if>
-					<c:if test="${waiting.userId == '없음'}">
-						<div class="btn_wrap">
-							<input type="button" onclick="back()" value="뒤로가기"
-								class="prev_btn">
-						</div>
-					</c:if>
-				</c:forEach>
+				<c:if test="${isUser == '없음'}">
+					<div class="btn_wrap">
+						<input style="margin-left: -10px;" type="button" onclick="back()"
+							value="뒤로가기" class="prev_btn">
+					</div>
+				</c:if>
+				<c:if test="${isUser != '없음'}">
+					<div class="btn_wrap">
+						<input type="button" onclick="back()" value="뒤로가기"
+							class="prev_btn"> <input type="submit" value="내역 초기화"
+							class="next_btn" style="margin-right: 10px;">
+					</div>
+				</c:if>
 			</form>
 		</div>
 		<hr>

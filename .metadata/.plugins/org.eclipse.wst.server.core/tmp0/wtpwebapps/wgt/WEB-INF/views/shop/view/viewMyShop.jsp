@@ -13,25 +13,24 @@
     <div id="wrap">
       <div style="width: 90%; height: 100%; background: white; margin-top: 30px; padding: 20px; box-shadow: 0 15px black; border-radius: 30px;">
       <form method="get" action="updateShop" class="flexForm" >
+	  <input name="shopName" type="text" class="text readonlyinput input_box2" readonly value="${shop.shopName }"/>
       <span class="text" style="color: #DA0037;">가게 사업자 번호</span>
-        <input name="businessNumber"  type="text" class="text readonlyinput" readonly value="${shop.businessNumber }"/>
-      <span class="text" style="color: #DA0037;">가게 이름</span>
-	    <input name="shopName" type="text" class="text readonlyinput" readonly value="${shop.shopName }"/>
+        <input name="businessNumber"  type="text" class="text readonlyinput input_box2" readonly value="${shop.businessNumber }"/>
       <span class="text" style="color: #DA0037;">가게 번호</span>
-      	<input name="shopTel" type="text" class="text readonlyinput" readonly value="${shop.shopTel }"/>
+      	<input name="shopTel" type="text" class="text readonlyinput input_box2" readonly value="${shop.shopTel }"/>
       <span class="text" style="color: #DA0037;">가게 주소</span>
-      	<input type="text" name="shop_address1" id="sample6_postcode" class="text input_box" value="${shop.shopPostCode }" readonly>
-		<input type="text" name="shop_address2" id="sample6_address" class="text input_box" value="${shop.shopAddress }" readonly>
-		<input type="text" name="shop_address3" id="sample6_detailAddress" class="text input_box" value="${shop.shopDetailAddress }" readonly>
-		<input type="text" name="shop_address4" id="sample6_extraAddress" class="text input_box" value="${shop.shopExtraAddress }" readonly>
+      	<input type="text" name="shopPostCode" id="sample6_postcode" class="text input_box2" value="${shop.shopPostCode }" readonly style="width:100%;">
+		<input type="text" name="shopAddress" id="sample6_address" class="text input_box2" value="${shop.shopAddress }" readonly style="width:100%;">
+		<input type="text" name="shopDetailAddress" id="sample6_detailAddress" class="text input_box2" value="${shop.shopDetailAddress }" readonly style="width:100%;">
+		<input type="text" name="shopExtraAddress" id="sample6_extraAddress" class="text input_box2" value="${shop.shopExtraAddress }" readonly style="width:100%;">
       <span class="text" style="color: #DA0037;">영업 시간</span>
-      	<input name="shopHours" type="text" class="text readonlyinput" readonly value="${shop.shopHours }"/>
+      	<input name="shopHours" type="text" class="text readonlyinput input_box2" readonly value="${shop.shopHours }"/>
       <span class="text" style="color: #DA0037;">가게 테이블 보유 수</span>
-      <input name="shopTables" type="text" class="text readonlyinput" readonly value="${shop.shopTables }"/>
+      <input name="shopTables" type="text" class="text readonlyinput input_box2" readonly value="${shop.shopTables }"/>
       <span class="text" style="color: #DA0037;">가게 테이블당 최대 수용 인원 수</span>
-      <input name="shopMaxPeoples" type="text" class="text readonlyinput" readonly value="${shop.shopMaxPeoples }"/>
+      <input name="shopMaxPeoples" type="text" class="text readonlyinput input_box2" readonly value="${shop.shopMaxPeoples }"/>
       <span class="text" style="color: #DA0037;">가게 사진</span>
-      	<img src="../resources/shop/shop_Img/${shop.shopImg }.jpg" style="border-radius: 30px;" />
+      	<img src="../resources/shop/shop_Img/${shop.shopImg }.jpg" style="border-radius: 30px; width: 100%;" />
       	<input name="shopImg" type="text" value="${shop.shopImg }" style="display:none;">
       	<input type="submit" class="next_btn" style="margin-top: 10px; width: 80%; margin: 15px 0 25px; border: 5px solid white; border-radius: 30px; box-shadow: 0 5px black; margin-top: 10px;" value="가게 정보 수정하기">
       	</form>
@@ -54,14 +53,9 @@
                   <p style= "font-size: 24px;">${menu.menuIntro }</p>
                   <p style= "font-size: 24px;">${menu.menuPrice }원</p>
                 </label>
-                </td>
-                <c:if test="${status.index  != 0 }">                
+                </td>             
                 <td><input type="checkbox" name="check" value="${menu.menuName }" id="${menu.menuName }" style="width: 30px; height: 30px;"></td>
-                </c:if>
-                <c:if test="${status.index == 0 }">
-                <td style="width: 30px; height: 30px;"></td>
-                </c:if>
-      			<td><button type="button" onclick="window.location.href='updateMenu?menuName=${menu.menuName}&menuPrice=${menu.menuPrice  }&menuIntro=${menu.menuIntro }&menuImg=${menu.menuImg}'" class="SubmitBtn"  style="height: 107.98px;">수정</button>
+      			<td><button type="button" onclick="window.location.href='updateMenu?menuName=${menu.menuName}&menuPrice=${menu.menuPrice  }&menuIntro=${menu.menuIntro }&menuImg=${menu.menuImg}'" class="SubmitBtn"  style="height: 107.98px; font-size:25px; font-family: 'KOTRAHOPE';">수정</button>
               </tr>
       	</c:forEach>
       </table>
@@ -70,7 +64,9 @@
       </c:if>
       <input type="button" value="메뉴 추가" class="SubmitBtn next_btn" style=" margin-top: 20px; margin-bottom: 20px; color: black; width: 80%; margin: 15px 0 25px; border: 5px solid white; border-radius: 30px; box-shadow: 0 5px black; margin-top: 10px; background: white;" onclick="location.href='addMenu'">
       </form>
-      <button type="button" name="button" class="next_btn" style=" width: 80%; margin: 15px 0 25px; border: 5px solid white; border-radius: 30px; box-shadow: 0 10px black;" onclick="location.href='../map/map'">홈으로 돌아가기</button>
+      <input type="button" value="현재 웨이팅 내역" class="SubmitBtn next_btn" style=" margin-top: 20px; margin-bottom: 20px; color: black; width: 80%; margin: 15px 0 25px; border: 5px solid white; border-radius: 30px; box-shadow: 0 5px black; margin-top: 10px; background: white;" onclick="location.href='../controller/waiting_management'">
+      <button type="button" name="button" class="next_btn" style=" width: 80%; margin: 15px 0 25px; border: 5px solid white; border-radius: 30px; box-shadow: 0 10px black;" onclick="location.href='../board/home'">지금 우리는 🤭</button>
+      <button type="button" name="button" class="next_btn" style=" width: 80%; margin: 15px 0 25px; border: 5px solid white; border-radius: 30px; box-shadow: 0 10px black;" onclick="location.href='../ownerLogOut'">로그아웃</button>
     </div>
   </body>
 </html>

@@ -26,7 +26,7 @@
 		<hr>
 		<div id="content">
 			<div style="text-align: center; font-size: 45px;" class="inner">
-					현재 대기중인 팀 : ${nowWaiting}
+					현재 대기중인 팀 : ${nowWaitingCount}
 			</div>
 			<div style="margin-top: 50px;" class="input_wrap">
 				<form class="form_style" action="waiting" method="post">
@@ -40,8 +40,8 @@
 							onClick="javascript:this.form.num_people.value++;">
 					</div>
 			</div>
-			<div class="btn_wrap">
-				<input type="submit" onclick="back()" value="뒤로가기" class="prev_btn"> <input
+			<div class="btn_wrap" style="width: 100%;">
+				<input onclick="back()" value="뒤로가기" class="prev_btn" style="text-align: center;"> <input style="margin-right: 20px;"
 					type="submit" value="웨이팅 하기" class="next_btn">
 			</div>
 			</form>

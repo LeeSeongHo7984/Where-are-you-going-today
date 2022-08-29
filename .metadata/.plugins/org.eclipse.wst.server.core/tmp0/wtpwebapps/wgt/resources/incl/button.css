@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+/*햄버거 버튼*/
+.userInformation {
+    position: fixed;
+    top: 21px;
+    left: 345px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    text-indent: 999px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.userInformation .openbody {
+	width: 0;
+	height: 0;
+}
+
+.userInformation.open .openbody {
+	margin: 0;
+	padding: 0;
+	width: 300px;
+	height: 844px;
+	right: 0;
+	top: 0;
+}
+
+.userInformation:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 2px;
+	width: 30px;
+	height: 2px;
+	background: #DA0037;
+	transform-origin: 0 0;
+	transition: all 0.3s;
+}
+
+.userInformation.open:before {
+	transform: rotate(45deg);
+	width: 30px;
+	height: 1px;
+	top: -1px;
+	background: black;
+}
+
+.userInformation span {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 30px;
+	height: 2px;
+	background: #DA0037;
+	margin-top: -1px;
+	transition: opacity 0.3s;
+}
+
+.userInformation.open span {
+	opacity: 0;
+}
+
+.userInformation:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	width: 100%;
+	height: 2px;
+	background: #DA0037;
+	transform-origin: 0 100%;
+	transition: all 0.3s;
+}
+
+.userInformation.open:after {
+	transform: rotate(-45deg);
+	width: 30px;
+	height: 1px;
+	bottom: 1px;
+	background: black;
+}
+
+/*유저 상세보기*/
+#gnb {
+	margin-left: 177px;
+    margin-top: 277px;
+	position: fixed;
+	margin-left: 100%;
+	z-index: 998;
+	background: #ffffff;
+	width: 223px;
+	border: 3px solid #DA0037;
+	border-radius: 15px;
+	height: 280px;
+	overflow: auto;
+	box-sizing: border-box;
+	padding: 10px;
+	color: #3b3b3d;
+	transition: all 0.5s;
+	line-height: 66px;
+}
+
+#gnb.on {
+	margin-left: 177px;
+    margin-top: 277px;
+    line-height: 52px;
+}
+
+#gnb ul li {
+	cursor: pointer;
+	font-size: 26px;
+}
+
+#gnb ul li:first-child {
+	cursor: default;
+	font-size: 26px;
+	line-height: 26px;
+	margin-bottom: 42px;
+}
+
+/*header_form*/
+.header_form {
+}
+
+.header_form.on {
+	opacity: 15%;
+}

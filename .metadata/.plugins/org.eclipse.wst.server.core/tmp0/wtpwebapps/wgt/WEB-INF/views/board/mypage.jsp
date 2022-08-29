@@ -2,6 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.io.*, java.text.*, java.util.*"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+Date nowTime = new Date();
+SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm");
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -42,42 +50,87 @@
 		</form>
 	</header>
 
-
-
 	<div class="mypage">
 		<a href="mypage"><img id="user"
 			src="../resources/board/img/user.png" width="30px" height="30px"
-			style="cursor: pointer;"></a>
+			style="cursor: pointer;">
+		</a>
+		<a href="home"><img id="gohome"
+			src="../resources/board/img/back.png" width="30px" height="30px"
+			style="cursor: pointer;">
+		</a>
 	</div>
-	<c:forEach var="user" items="${userList}">
- 		${user.userId}
- 		${user.name}
-  		${user.phone}
-	</c:forEach>
-	<div class="selectlist">
-		<form:select path="board" class="selectbox">
-			<option value="unknown" style="text-align: center;">&emsp;&emsp;&emsp;&ensp;&nbsp;--
-				선택 --</option>
-			<c:forEach var="item" items="${board}">
-				<option style="text-align: center;"
-					value="${item.number}${item.title}${item.imgname}">[No.${item.number}]
-					${item.title}</option>
-					<img src="../resources/board/img/upload/${item.imgname}.jpg"
-							style="width: 30px; height: 30px">
-			</c:forEach>
-		</form:select>
+	<%-- <div class="userinfo" style="text-align: center; margin-top: 20px; font-size: 20px;">
+ 			${userId}님의 마이페이지
+	</div> --%>
+
+	<div class="body1">
+		<div class="feedReactionButton">
+			<div class="boardarea">
+				<c:forEach var="item" items="${mypageboard}" varStatus="status">
+					<h5	style="text-align: center; position: relative; margin-bottom: -25px; left: 1%;">
+						[No.${item.number}]
+					</h5>
+					<div class="write" style="margin-top: 30px; margin-bottom: 10px;">
+						<img src="../resources/board/img/upload/${item.imgname}.jpg"
+							style="width: 370px; height: 330px; border-radius: 5px;"><br>
+						<div class="likearea">
+							<a class="likebtn"
+								style="display: flex; padding-left: 1px; margin-top: 1px;"></a>
+							<div class="feedReaction">
+								<span class="liketext" style="display:none;">좋아요 <span class="likesresult"></span>개
+								</span>
+							</div>
+						</div>
+						<p class="mypageregdate">
+							<fmt:formatDate pattern="yy년MM월dd일 a hh:mm" value="${item.regDate}" />
+						</p>
+						<h4>${item.title}</h4>
+						<br> ${item.content}<br>
+					</div>
+
+					<div class="update_delete_area"	style="display: flex; justify-content: space-evenly; height: 30px; border-bottom: 2px solid #f1f1f1;">
+						<div class="updateearea">
+							<form method="post" enctype="multipart/form-data">
+								<button class="updatebtn" type="button" value="수정"	onclick="upCheck(${item.number})"
+								style="position: relative; left: 1%; margin: 0 auto; cursor: pointer;">수정</button>
+							</form>
+						</div>
+						<div class="deletearea">
+								<button class="deletebtn" type="button" value="삭제" onclick="delCheck(${item.number})"
+									style="position: relative; left: 1%; margin: 0 auto; cursor: pointer;">삭제</button>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
 	</div>
-	<div class="updateearea">
-		<form action="update" method="post" style="text-align: center;">
-			<button class="updatebtn" type="button" value="수정"
-				style="position: relative; left: 1%; margin-top: 20px; margin-bottom: 20px; cursor: pointer; z-index: 1000;">수정</button>
-		</form>
-	</div>
-	<div class="deletearea">
-		<form action="delete" method="post" style="text-align: center;">
-			<button class="deletebtn" type="button" value="삭제"
-				style="position: relative; left: 1%; margin-top: 20px; margin-bottom: 20px; cursor: pointer; z-index: 1000;">삭제</button>
-		</form>
-	</div>
+
+<script>
+	let like = document.querySelectorAll(".likebtn")
+
+	for(let i = 0; i < like.length; i++){
+		like[i].addEventListener('click', ()=> {
+			like[i].classList.toggle('open')
+		})
+	}
+
+	function upCheck(num) {
+		const link = "update?number=" + num;
+		location.href=link;
+	};
+
+	function delCheck(num) {
+		const link = "delete?number=" + num;
+		if(confirm("정말 삭제하시겠습니까?")){
+			/*console.log(num);*/
+ 			alert("삭제를 완료하였습니다.");
+			location.href=link;
+		}else{
+			alert("삭제를 취소하였습니다.")
+		}
+	};
+</script>
+
 </body>
 </html>

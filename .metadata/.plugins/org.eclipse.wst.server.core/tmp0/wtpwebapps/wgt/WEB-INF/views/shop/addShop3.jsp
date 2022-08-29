@@ -19,14 +19,14 @@
             <p>사장님만의 자신있는<br>가게 사진을 등록해주세요!</p>
             <div class="file_upload_wrap">
               <label for="upload_file" class="upload_label">사진 등록</label>
-              <input id="upload_file" type="file" name="shop_img" onchange="readURL(this)" accept="image/jpeg, image/png, image/jpg">
+              <input id="upload_file" type="file" name="shop_img" onchange="readURL(this)" accept=".jpg">
               <br>
               <span style="margin-bottom: 15px; font-size: 28px;">미리보기</span>
               <img style="width: 380px; height: 400px;" id="preview" />
             </div>
             <hr>
             <div class="btn_wrap">
-              <input type="button" value="취소하기" onclick="location.href='map/map'" class="prev_btn">
+              <input type="button" value="취소하기" onclick="location.href='login'" class="prev_btn">
               <input type="submit" value="다음으로" class="next_btn">
             </div>
           </form>
@@ -39,8 +39,8 @@
   <script type="text/javascript">
 	function readURL(input) {
 		const type = input.files[0].name.split('.');
-		if(type[1] != "jpg" && type[1] != "png" &&  type[1] != "jpeg"){
-			alert("이미지 파일은 (jpg, png, jpeg) 형식만 등록 가능합니다.");
+		if(type[1] != "jpg"){
+			alert("이미지 파일은 jpg 형식만 등록 가능합니다.");
 			document.getElementById('preview').src = "";
 			document.getElementById('img').value = null;
 			return false;

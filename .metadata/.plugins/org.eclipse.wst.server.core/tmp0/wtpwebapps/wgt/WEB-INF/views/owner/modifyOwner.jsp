@@ -22,8 +22,6 @@
 		<div style="margin-left: 55px; padding-top: 20px; font-size: 30px;">비밀번호 <input type="password" name="passwd" value="${owner.passwd}" required></div><br>
 		<div style="margin-left: 95px; padding-top: 20px; font-size: 30px;">이름 <input type="text" name="name" value="${owner.name}" required></div><br>
 		<div style="margin-left: 55px; padding-top: 20px; font-size: 30px;">사업자 번호 <input type="text" name="ssn" value="${owner.bnumber}" readonly></div><br>
-		<div style="margin-left: 47px; padding-top: 20px; font-size: 30px;">전화번호 <input type="text" name="phone" value="${owner.phone}" required></div><br>
-		<div style="margin-left: 95px; padding-top: 20px; font-size: 30px;">가게주소 <input type="text" name="addr" value="${owner.addr}" required></div><br>
 		<button type="submit" class="mBtn">수정완료</button>
 		</c:forEach>
 	</form>

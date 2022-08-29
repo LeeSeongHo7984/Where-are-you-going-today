@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.List, java.net.URLEncoder"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="java.io.*, java.text.*, java.util.*"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.net.URLDecoder" %>
+<%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
@@ -41,33 +45,62 @@
 		</form>
 	</header>
 	
-		<div class="writearea">
-			<form action="write" method="post" style="text-align:center;">
-				<button class="writebtn" type="button" value="글쓰기" onclick = "location.href='write'"
-					style="position: relative; left: 1%; margin-top:20px; margin-bottom: 20px; cursor: pointer; z-index: 1000;">글쓰기</button>
-			</form>
-		</div>
 	<div class="mypage">
 		<a href="mypage"><img id="user"
 			src="../resources/board/img/user.png" width="30px" height="30px"
-			style="cursor: pointer;"></a>
+			style="cursor: pointer;">
+		</a>
+		<a href="home;"><img id="gohome"
+			src="../resources/board/img/back.png" width="30px" height="30px"
+			style="cursor: pointer;">
+		</a>
 	</div>
-	<h3 style="text-align: center; margin-top: 35px;">게시글 작성</h3>
+	<h3 style="text-align: center; margin-top: 30px; margin-bottom: -15px;">게시글 작성</h3>
 	<div class="write_area">
 		<form action="write" method="post" enctype="multipart/form-data"
 			style="text-align: center; display: grid; justify-content: center; margin-top: 40px;">
-			<span>제목</span>
+			<span style="font-size: 20px;">제목</span>
 			<textarea class="title_area" name="title" required="required"
-				maxlength="50" placeholder="제목을 입력하세요(최대 50자)"></textarea>
-			<span>내용</span>
-			<textarea class="content_area" name="content" required="required"
-				maxlength="150" placeholder="내용을 입력하세요(최대 150자)"></textarea>
+				maxlength="30" placeholder=" 제목을 입력하세요(최대 30자)"></textarea>
+			<span style="font-size: 20px;">내용</span>
+			<textarea class="content_area" name="content" required
+				maxlength="120" placeholder=" 내용을 입력하세요(최대 120자)"></textarea>
 			사진 선택 : <span><input type="file" accept=".jpg" name="file"
-				required="required"><br></span> <input type="submit"
-				class="add" value="등록" required="required"><br>
+				required="required"><br></span>
+				<img id="profileImg" src="../resources/board/img/upload/${board.imgname}.jpg" style="width:50px; height:50px; margin:0 auto; margin-top:5px;">이미지 
+				<input type="submit" class="add" value="등록" required><br>
 		</form>
 		<button class="go_home" onclick="location.href='home'">목록으로</button>
 	</div>
 
 </body>
+<script type="text/javascript">
+		// 이미지 파일 보이기
+		
+		// input 태그 (name이 file)를 가져옴 
+		let fileTag = document.querySelector("input[name=file]");
+		
+		// 파일태그에 변화가 있을 때 실행될 함수 작성 
+		fileTag.onchange = function () {
+			
+			let imgTag = document.querySelector("#profileImg");
+			
+			// 파일이 있는지 확인
+			if(fileTag.files.length > 0) {
+				// 파일을 선택한 경우 미리보기 생성 (이미지 태그 src에 데이터를 넣어주면 됨)
+				let reader = new FileReader();
+				
+				// reader 읽어들이는 작업(onload)를 끝냈을 때 함수 실행, 읽어온 데이터를 함수의 파라미터로 줄 수 있음
+				reader.onload = function (data) {
+					console.log(data);
+					imgTag.src = data.target.result;
+				}
+				
+				reader.readAsDataURL(fileTag.files[0]);
+			} else {
+				// 취소 버튼 누를 경우
+				imgTag.src = "";
+			}
+		}
+</script>
 </html>
