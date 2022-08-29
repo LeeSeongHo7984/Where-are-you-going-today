@@ -95,10 +95,9 @@
                           </div>
                         </c:forEach>
 
-        Map.jsp 스크립트 일부
-         
-        function filter() {
+			Map.jsp 스크립트 일부
 
+			function filter() {
 			var value, name, item, i, background, menuList, menu, menuLine;
 
 			value = document.getElementById("inputSearch").value.toUpperCase();
@@ -137,7 +136,7 @@
 					}
 				}
 			}
-		}
+			}
   
 + 웨이팅 조회 및 등록
   1. 매장명과 로그인 되어있는 ID 세션을 이용하여 정보를 가져왔습니다.
@@ -145,95 +144,95 @@
   3. 웨이팅 첫번째 순서일 때 자동으로 웨이팅 취소를 시키기 위해 먼저 현재시간에서 5분뒤의 시간을 DB에 저장시ㅣ켰습니다.
   4. DB에 저장한 시간과 현재시간을 비교해 현재시간이 더 크다면 웨이팅을 삭제시켜 주었습니다.
   
-       WaitingController 일부
-        
-   	@GetMapping("/controller/get_waiting")
-   	public String getWaitingForm(Model model, HttpSession session) throws ParseException {
-		String userId = (String) session.getAttribute("userId");
-		// 웨이팅을 하지 않았을 때
-		if (waitingService.findWaitingById(userId).get(0).getBarName() == "없음") {
-			List<Waiting> noWaiting = waitingService.findWaitingById(userId);
-			model.addAttribute("frontCount", "0");
-			model.addAttribute("allCount", "0");
-			model.addAttribute("waiting", noWaiting);
-			model.addAttribute("shopTel", "-");
-			return "waiting/get_waiting";
-		}
+		       WaitingController 일부
 
-		// 웨이팅 해둔 상태 일때
-		List<Waiting> waitingList = waitingService.findAllWaiting(
-				waitingService.findWaitingById(userId).get(0).getBarName());
-		long allCount = 0;
-		long frontCount = 0;
-
-		try {
-			Date day1;
-			Date day2;
-			day2 = format
-					.parse(waitingService.findWaitingById(userId).get(0).getRegDate());
-			for (int i = 0; i < waitingList.size(); i++) {
-				allCount++; // 특정 매장에대한 나 포함 모든 웨이팅 수
-				day1 = format.parse(waitingList.get(i).getRegDate());
-				int compare = day1.compareTo(day2);
-				if (compare < 0) {
-					frontCount++; // 내 앞의 웨이팅 수
+			@GetMapping("/controller/get_waiting")
+			public String getWaitingForm(Model model, HttpSession session) throws ParseException {
+				String userId = (String) session.getAttribute("userId");
+				// 웨이팅을 하지 않았을 때
+				if (waitingService.findWaitingById(userId).get(0).getBarName() == "없음") {
+					List<Waiting> noWaiting = waitingService.findWaitingById(userId);
+					model.addAttribute("frontCount", "0");
+					model.addAttribute("allCount", "0");
+					model.addAttribute("waiting", noWaiting);
+					model.addAttribute("shopTel", "-");
+					return "waiting/get_waiting";
 				}
-			}
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 
-		model.addAttribute("frontCount", frontCount);
-		model.addAttribute("allCount", allCount);
-		model.addAttribute("waiting", waitingService.findWaitingById(userId));
-		model.addAttribute("shopTel",
-				shopService.findAllByShopName(
-						waitingService.findWaitingById(userId).get(0).getBarName()).get(0).getShopTel());
-		
-		// 내 앞 대기팀이 0팀 일때
-		if (frontCount == 0) {
-			// 언제까지오라는 시간 부여받지 않았을때 or waitingStartTime이 0 일때
-			if (waitingService.findWaitingById(userId).get(0).getWaitingStartTime()
-					.equals("0")) {
-				SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
-				Date nowDate = new Date();
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(nowDate);
-				cal.add(Calendar.MINUTE, 1); // 웨이팅 타이머 1 -> 1분
-				String outputText = outputFormat.format(cal.getTime());
+				// 웨이팅 해둔 상태 일때
+				List<Waiting> waitingList = waitingService.findAllWaiting(
+						waitingService.findWaitingById(userId).get(0).getBarName());
+				long allCount = 0;
+				long frontCount = 0;
 
-				waitingService.addWaitingTime(userId, outputText);
-				String waitingTime = waitingService.findWaitingById(userId).get(0)
-						.getWaitingStartTime();
-				model.addAttribute("msg", waitingTime + " 까지 와주시기 바랍니다. (자동취소 예정)");
+				try {
+					Date day1;
+					Date day2;
+					day2 = format
+							.parse(waitingService.findWaitingById(userId).get(0).getRegDate());
+					for (int i = 0; i < waitingList.size(); i++) {
+						allCount++; // 특정 매장에대한 나 포함 모든 웨이팅 수
+						day1 = format.parse(waitingList.get(i).getRegDate());
+						int compare = day1.compareTo(day2);
+						if (compare < 0) {
+							frontCount++; // 내 앞의 웨이팅 수
+						}
+					}
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+
+				model.addAttribute("frontCount", frontCount);
+				model.addAttribute("allCount", allCount);
+				model.addAttribute("waiting", waitingService.findWaitingById(userId));
+				model.addAttribute("shopTel",
+						shopService.findAllByShopName(
+								waitingService.findWaitingById(userId).get(0).getBarName()).get(0).getShopTel());
+
+				// 내 앞 대기팀이 0팀 일때
+				if (frontCount == 0) {
+					// 언제까지오라는 시간 부여받지 않았을때 or waitingStartTime이 0 일때
+					if (waitingService.findWaitingById(userId).get(0).getWaitingStartTime()
+							.equals("0")) {
+						SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
+						Date nowDate = new Date();
+						Calendar cal = Calendar.getInstance();
+						cal.setTime(nowDate);
+						cal.add(Calendar.MINUTE, 1); // 웨이팅 타이머 1 -> 1분
+						String outputText = outputFormat.format(cal.getTime());
+
+						waitingService.addWaitingTime(userId, outputText);
+						String waitingTime = waitingService.findWaitingById(userId).get(0)
+								.getWaitingStartTime();
+						model.addAttribute("msg", waitingTime + " 까지 와주시기 바랍니다. (자동취소 예정)");
+						return "waiting/get_waiting";
+					} else {
+						// 언제까지 오라는 시간을 부여 받은 상황
+						SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+						Date nowDate = new Date();
+						Calendar cal = Calendar.getInstance();
+					DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+						String waitingTime = waitingService.findWaitingById(userId).get(0)
+								.getWaitingStartTime();
+
+						cal.setTime(formatter.parse(waitingTime));
+						int yearDate = Integer.parseInt(df.format(nowDate.getTime()).split("-", 0)[0]);
+						int monthDate = Integer.parseInt(df.format(nowDate.getTime()).split("-", 0)[1]);
+						int dateDate = Integer.parseInt(df.format(nowDate.getTime()).split("-", 0)[2]);
+
+						cal.set(yearDate, monthDate-1, dateDate);
+
+						model.addAttribute("msg", waitingTime + " 까지 와주시기 바랍니다. (자동취소 예정)");
+						if ( nowDate.after(cal.getTime()) ) { 
+							waitingService.deleteWaiting(userId);
+							return "redirect:/controller/get_waiting";
+						}
+					}
+				}
+
 				return "waiting/get_waiting";
-			} else {
-				// 언제까지 오라는 시간을 부여 받은 상황
-				SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-				Date nowDate = new Date();
-				Calendar cal = Calendar.getInstance();
-		        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-				
-				String waitingTime = waitingService.findWaitingById(userId).get(0)
-						.getWaitingStartTime();
-				
-				cal.setTime(formatter.parse(waitingTime));
-				int yearDate = Integer.parseInt(df.format(nowDate.getTime()).split("-", 0)[0]);
-				int monthDate = Integer.parseInt(df.format(nowDate.getTime()).split("-", 0)[1]);
-				int dateDate = Integer.parseInt(df.format(nowDate.getTime()).split("-", 0)[2]);
-  
-				cal.set(yearDate, monthDate-1, dateDate);
-				
-				model.addAttribute("msg", waitingTime + " 까지 와주시기 바랍니다. (자동취소 예정)");
-				if ( nowDate.after(cal.getTime()) ) { 
-					waitingService.deleteWaiting(userId);
-					return "redirect:/controller/get_waiting";
-				}
 			}
-		}
-		
-		return "waiting/get_waiting";
-	}
   
 + 게시글 좋아요 기능
   1. DB에 좋아요 테이블을 만들고 눌러졌는지 체크하는 ikeCheck  열을 만들어 true, false로 구분하였습니다.
@@ -243,67 +242,67 @@
   5. false라면 게시글의 좋아요 이미지 모두를 흰색하트로 변경하는 작업을 추가하면서 해결할 수 있었습니다. (true 라면 반대로 빨간하트 추가)
   
       
-    BoardController 일부
-  
-    @GetMapping("/board/home")
-    public String list(HttpSession session, Model model, Board board) {
-		String userId = (String) session.getAttribute("userId");
-		String bnsNum = (String) session.getAttribute("bnsNum");
+		    BoardController 일부
 
-		if (session.getAttribute("userId") == null && session.getAttribute("dbOwner") == null) {
-			model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
-			model.addAttribute("url", "../login");
-			return "alert/alert";
-		}
+		    @GetMapping("/board/home")
+		    public String list(HttpSession session, Model model, Board board) {
+				String userId = (String) session.getAttribute("userId");
+				String bnsNum = (String) session.getAttribute("bnsNum");
 
-		for (int i = 0; i < service.read(bnsNum).size(); i++) {
-			long boardNum = service.read(bnsNum).get(i).getNumber();
-			if (!service.findLikes(userId, boardNum).get(0).getUserId().equals("없음")) {		
-				if (service.findLikes(userId, boardNum).get(0).getLikeCheck().equals("false")) {
-					service.updateLikeImg(boardNum, "dislikeheart");
+				if (session.getAttribute("userId") == null && session.getAttribute("dbOwner") == null) {
+					model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
+					model.addAttribute("url", "../login");
+					return "alert/alert";
+			}
+
+			for (int i = 0; i < service.read(bnsNum).size(); i++) {
+				long boardNum = service.read(bnsNum).get(i).getNumber();
+				if (!service.findLikes(userId, boardNum).get(0).getUserId().equals("없음")) {		
+					if (service.findLikes(userId, boardNum).get(0).getLikeCheck().equals("false")) {
+						service.updateLikeImg(boardNum, "dislikeheart");
+					} else {
+						service.updateLikeImg(boardNum, "likeheart");
+					}
 				} else {
-					service.updateLikeImg(boardNum, "likeheart");
+					service.updateLikeImg(boardNum, "dislikeheart");
 				}
-			} else {
-				service.updateLikeImg(boardNum, "dislikeheart");
 			}
-		}
-                                                    
-		model.addAttribute("board", service.read(bnsNum));
-                                                    
-		return "board/home";
-	}
-                                                    
-  @GetMapping("/board/likes")
-	public String getLikes(HttpSession session, Model model, Board board, HttpServletRequest request) {
-		String userId = (String) session.getAttribute("userId");
 
-		// 만약 Likes 테이블에 id, number가 동일한 정보가 없으면 만들어주기 아니면 밑에꺼 실행
-		if (service.findLikes(userId, board.getNumber()).get(0).getUserId().equals("없음")
-				&& service.findLikes(userId, board.getNumber()).get(0).getNumber() == -1) {
-			Likes likes = new Likes();
-			String result = "false";
-			likes.setUserId(userId);
-			likes.setLikeCheck(result);
-			likes.setNumber(board.getNumber());
-			service.likeuser(likes);
-			service.checkUpdate(userId, board.getNumber(), "true");
-			service.likecountPlus(board.getLikecount(), board.getNumber());
-			service.updateLikeImg(board.getNumber(), "likeheart");
-		} else { // DB에 아이디랑 게시글번호가 동일한 정보가 있다면 true, false를 비교한다
-			if (service.findLikes(userId, board.getNumber()).get(0).getLikeCheck().equals("false")) { // 좋아요를 누르지 않은 상태
-				service.checkUpdate(userId, board.getNumber(), "true");
-				service.likecountPlus(board.getLikecount(), board.getNumber());
-				service.updateLikeImg(board.getNumber(), "likeheart");
-			} else {
-				service.checkUpdate(userId, board.getNumber(), "false");
-				service.likecountDown(board.getLikecount(), board.getNumber());
-				service.updateLikeImg(board.getNumber(), "dislikeheart");
+			model.addAttribute("board", service.read(bnsNum));
+
+			return "board/home";
 			}
-		}
+                                                    
+		  @GetMapping("/board/likes")
+			public String getLikes(HttpSession session, Model model, Board board, HttpServletRequest request) {
+				String userId = (String) session.getAttribute("userId");
 
-		return "redirect:/board/home";
-	}
+				// 만약 Likes 테이블에 id, number가 동일한 정보가 없으면 만들어주기 아니면 밑에꺼 실행
+				if (service.findLikes(userId, board.getNumber()).get(0).getUserId().equals("없음")
+						&& service.findLikes(userId, board.getNumber()).get(0).getNumber() == -1) {
+					Likes likes = new Likes();
+					String result = "false";
+					likes.setUserId(userId);
+					likes.setLikeCheck(result);
+					likes.setNumber(board.getNumber());
+					service.likeuser(likes);
+					service.checkUpdate(userId, board.getNumber(), "true");
+					service.likecountPlus(board.getLikecount(), board.getNumber());
+					service.updateLikeImg(board.getNumber(), "likeheart");
+				} else { // DB에 아이디랑 게시글번호가 동일한 정보가 있다면 true, false를 비교한다
+					if (service.findLikes(userId, board.getNumber()).get(0).getLikeCheck().equals("false")) { // 좋아요를 누르지 않은 상태
+						service.checkUpdate(userId, board.getNumber(), "true");
+						service.likecountPlus(board.getLikecount(), board.getNumber());
+						service.updateLikeImg(board.getNumber(), "likeheart");
+					} else {
+						service.checkUpdate(userId, board.getNumber(), "false");
+						service.likecountDown(board.getLikecount(), board.getNumber());
+						service.updateLikeImg(board.getNumber(), "dislikeheart");
+					}
+				}
+
+				return "redirect:/board/home";
+			}
                                                     
                                                     
 ## 구현 화면
