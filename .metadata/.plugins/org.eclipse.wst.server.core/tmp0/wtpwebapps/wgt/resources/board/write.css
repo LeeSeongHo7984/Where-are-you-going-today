@@ -1,0 +1,89 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'KOTRAHOPE';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+	font-family: 'KOTRAHOPE';
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+/*헤더영역*/
+.container{
+ border : 1px solid rgba(var(--b6a,219,219,219),1);;
+ display : flex;
+ flex-direction: column;
+ align-items: center;
+ height : 480px;
+ width : 450px;
+ background-color : rgba(var(--d87,255,255,255),1);
+ padding : 30px;
+}
+
+.container h1 {
+ 	margin : 30px;
+    font-size : 45px;
+    font-family : "Lobster", cursive;
+}
+.headerContainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-bottom : 1px solid rgba(var(--b6a,219,219,219),1);
+    height : 54px;
+    padding : 30px;
+}
+.headerContents{
+    display : flex;
+    justify-content: space-evenly;
+    width : 100%;
+    align-items : center;
+}
+/*헤더영역끝*/
+.add {
+	position: relative;
+	cursor: pointer;
+    font-size: 18px;
+    width: 80px;
+    height: 35px;
+    border: 5px;
+    border-radius: 8px;
+    background-color: #DA0037;
+    color: white;
+    margin-top: 30px;
+    left: 35%;
+}
+.go_home {
+	position: relative;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 18px;
+    width: 97px;
+    height: 35px;
+    border: 5px;
+    border-radius: 8px;
+    background-color: #DA0037;
+    color: white;
+    right: 4px;
+}
+.wirte_area form{
+	display: grid;
+    text-align: center;
+    justify-content: center;
+}
+.title_area, .content_area {
+	border-radius: 5px;
+	margin: 10px;
+}
+.textarea .title_area {
+	width: 300px;
+}
+.content_area {
+	width: 300px;
+	height: 180px;
+}

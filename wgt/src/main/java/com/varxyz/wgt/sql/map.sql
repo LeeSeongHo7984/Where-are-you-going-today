@@ -1,0 +1,27 @@
+CREATE TABLE map(
+mid				BIGINT			PRIMARY KEY AUTO_INCREMENT,
+businessNumber	VARCHAR(13)		NOT NULL,
+longitude		DOUBLE			NOT NULL,
+latitude		DOUBLE			NOT NULL,
+CONSTRAINT map_FK
+	FOREIGN KEY(businessNumber) REFERENCES shop(businessNumber)
+)
+
+/*시류*/ 
+INSERT INTO map VALUES(mid, "192-83-74655", 35.865886, 128.595598); 
+
+/*헤기*/
+INSERT INTO map VALUES(mid, "918-27-36455",35.8719847, 128.5973511); 
+
+/*크로바*/
+INSERT INTO map VALUES(mid, "554-67-38291", 35.8713156, 128.5988512); 
+
+/*뻐꾸기*/
+INSERT INTO map VALUES(mid, "647-32-81955",35.8727425, 128.5984543); 
+
+SELECT * FROM map;
+DROP TABLE map
+SELECT * FROM map WHERE name like '%영희%'
+
+SELECT mid, longitude, latitude FROM map ORDER BY mid ASC
+

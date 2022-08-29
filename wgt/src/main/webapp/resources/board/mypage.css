@@ -1,0 +1,80 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'KOTRAHOPE';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+	font-family: 'KOTRAHOPE';
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.write {
+	position: relative;
+    width: 370px;
+    margin: 0 auto;
+    margin-top: 5px;
+    line-height: 1.2;
+}
+
+.update {
+	display: flex;
+}
+
+.select {
+	border-radius: 5px;
+}
+.selectlist {
+	position: relative;
+	margin-top: 25px;
+	left: 5%;
+}
+
+.selectbox {
+	position: relative;
+    cursor: pointer;
+    font-size: 15px;
+    width: 170px;
+    height: 30px;
+    border: 5px;
+    border-radius: 5px;
+    background-color: #DA0037;
+    color: white;
+    margin-top: 10px;
+}
+
+select option {
+	background: #f1f1f1;
+	color: #DA0037;
+	font-size: 13px;
+}
+
+/*수정, 삭제 버튼*/
+.update_delete_area .updatebtn, .update_delete_area .deletebtn {
+	font-family: 'KOTRAHOPE';
+	position: relative;
+    cursor: pointer;
+    font-size: 15px;
+    width: 60px;
+    height: 20px;
+    border: 5px;
+    border-radius: 8px;
+    background-color: #DA0037;
+    color: white;
+    margin-top: 30px;
+    left: 35%;
+    transition: background 0.05s ease;
+    box-shadow:.3rem .1rem 104rem #BEC5D0, -.2rem -.1rem .4rem #FBFBFB;;
+}
+
+.update_delete_area .updatebtn:active, .update_delete_area .deletebtn:active {
+	position: relative;
+	top: 2px;
+	margin-bottom: 2px;
+	box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB, inset .3rem .4rem .8rem #BEC5D0;
+}

@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'KOTRAHOPE';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html {
+	width: 390px;
+	height: 844px;
+}
+
+body {
+	font-family: 'KOTRAHOPE';
+	margin: 0;
+	width: 390px;
+	height: 844px;
+	box-sizing: border-box;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+#inputaddr, #autoName {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	cursor: default;
+}
+
+.header_form {
+	margin-top: -30px;
+}
+
+.header_form.on {
+	opacity: 15%;
+}
+
+.back img {
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 30px;
+	height: 30px;
+	z-index: 999;
+}
+
+.userInformation {
+	margin-left: 306px;
+	position: fixed;
+	top: 8px;
+	width: 24px;
+	height: 24px;
+	overflow: hidden;
+	text-indent: 999px;
+	cursor: pointer;
+	z-index: 999;
+}
+
+.userInformation .openbody {
+	width: 0;
+	height: 0;
+}
+
+.userInformation.open .openbody {
+	margin: 0;
+	padding: 0;
+	width: 300px;
+	height: 844px;
+	right: 0;
+	top: 0;
+}
+
+.userInformation:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 2px;
+	width: 30px;
+	height: 2px;
+	background: #DA0037;
+	transform-origin: 0 0;
+	transition: all 0.3s;
+}
+
+.userInformation.open:before {
+	transform: rotate(45deg);
+	width: 30px;
+	height: 1px;
+	top: -1px;
+	background: black;
+}
+
+.userInformation span {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 30px;
+	height: 2px;
+	background: #DA0037;
+	margin-top: -1px;
+	transition: opacity 0.3s;
+}
+
+.userInformation.open span {
+	opacity: 0;
+}
+
+.userInformation:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	width: 100%;
+	height: 2px;
+	background: #DA0037;
+	transform-origin: 0 100%;
+	transition: all 0.3s;
+}
+
+.userInformation.open:after {
+	transform: rotate(-45deg);
+	width: 30px;
+	height: 1px;
+	bottom: 1px;
+	background: black;
+}
+
+#gnb {
+	position: fixed;
+	margin-left: 100%;
+	z-index: 1000;
+	background: #ffffff;
+	width: 223px;
+	border: 3px solid #DA0037;
+	border-radius: 15px;
+	height: 750px;
+	overflow: auto;
+	box-sizing: border-box;
+	padding: 50px 15px 60px 30px;
+	color: #3b3b3d;
+	transition: all 0.5s;
+}
+
+#gnb.on {
+	margin-left: 156px;
+}
+
+.selectbox {
+	font-family: 'KOTRAHOPE';
+	font-size: 20px;
+	border-radius: 10px;
+	color: black;
+	border: 2px solid #DA0037;
+	width: 60px;
+	height: 35px;
+	margin: 10px 0 10px 10px;
+	text-align: center;
+	z-index: 99;
+}
+
+.inputtext {
+	font-family: 'KOTRAHOPE';
+	font-size: 20px;
+	padding: 0 8px 0 8px;
+	border-radius: 10px;
+	border: 2px solid #DA0037;
+	display: inline-block;
+	width: 287px;
+	height: 30px;
+}
+
+.searchbtn {
+	font-family: 'KOTRAHOPE';
+	font-size: 20px;
+	background-color: #DA0037;
+	color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+	width: 370px;
+	height: 30px;
+	margin-top: -10px;
+	margin-left: 10px;
+}
+
+.wrap {
+	position: absolute;
+	left: 0;
+	bottom: 28px;
+	width: 110px;
+	height: 45px;
+	margin-left: -53px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 20px;
+	font-family: 'KOTRAHOPE';
+	line-height: 0.9;
+	color: black;
+}
+
+.wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+	padding: 10px 0 10px;
+	height: 15px;
+	background: white;
+	border: 2px solid black;
+	border-radius: 15px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 0 solid transparent;
+	border-top: 10px solid white;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background:
+		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.map_wrap, .map_wrap * {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+	color: #000;
+	text-decoration: none;
+}
+
+#menu_wrap {
+	height: 700px;
+	transition: all 0.3s;
+	top: 73px;
+	left: 0;
+	bottom: 0;
+	width: 250px;
+	margin: 10px 0 30px 10px;
+	padding: 5px;
+	overflow-y: auto;
+	background: rgba(255, 255, 255, 0.7);
+	z-index: 1;
+	font-size: 12px;
+	border-radius: 10px;
+	position: absolute;
+	opacity: 0;
+}
+
+.bg_white {
+	background: #fff;
+}
+
+#menu_wrap hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 2px solid #5F5F5F;
+	margin: 3px 0;
+}
+
+#menu_wrap .option {
+	text-align: center;
+}
+
+#menu_wrap .option p {
+	margin: 10px 0;
+}
+
+#menu_wrap .option button {
+	margin-left: 5px;
+}
+
+#keyword{
+  margin: 3% 0px;
+  display: flex;
+  align-items: center;
+}
+#placesList li {
+	list-style: none;
+}
+
+#placesList .item {
+	position: relative;
+	border-bottom: 1px solid #888;
+	overflow: hidden;
+	cursor: pointer;
+	min-height: 65px;
+}
+
+#placesList .item span {
+	display: block;
+	margin-top: 4px;
+}

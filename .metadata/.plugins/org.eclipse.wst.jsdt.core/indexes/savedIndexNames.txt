@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\tjdgh\LSH\Where-are-you-going-today\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+378244300.index
+2364889494.index
+3956558308.index
+3328888547.index
+3280352730.index
+4066432570.index

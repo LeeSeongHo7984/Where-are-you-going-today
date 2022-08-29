@@ -1,0 +1,10 @@
+CREATE TABLE Owner(
+	ownerId		VARCHAR(20)		PRIMARY KEY,
+	passwd		VARCHAR(20)		NOT NULL,
+	name		VARCHAR(20)		NOT NULL,
+	bnumber		VARCHAR(20)		NOT NULL,
+	phone		VARCHAR(20)		NOT NULL,
+	addr		VARCHAR(100)	NOT NULL
+);
+
+SELECT * FROM Owner
